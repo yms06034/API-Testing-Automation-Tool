@@ -94,6 +94,7 @@
   에러 핸들링 및 재시도 로직
 
   ### 3. Database Schema Design
+  ```
   Projects
   ├── Collections
   │   ├── Requests
@@ -102,6 +103,7 @@
   │   └── Variables
   ├── History
   └── TestResults
+  ```
 
   ### 4. Custom UI Components
   - 코드 에디터 with 구문 강조
