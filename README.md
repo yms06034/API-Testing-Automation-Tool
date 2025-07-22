@@ -160,7 +160,7 @@
   - 문제: JavaScript의 전역 변수 변경을 Python에 반영하는 방법
     
   - 해결:
-  globals: {
+  ```globals: {
       values: globals,
       get: function (key) { return this.values[key]; },
       set: function (key, value) {
@@ -169,17 +169,21 @@
           console.log("__globals_update__" + JSON.stringify({key: key, value: value}));
       }
   }
+  ```
 
   **Python에서 전역 변수 업데이트 감지**
+  ```
   updated_globals = ctx.eval("JSON.stringify(globals)")
   globals_dict.clear()
   globals_dict.update(json.loads(updated_globals))
+  ```
 
   ## 한계점과 아쉬움
   
   ### 1. 로컬 실행의 근본적 한계
 
   #### 리소스 모니터링 코드
+  ```
   def check_system_resources():
       cpu_percent = psutil.cpu_percent(interval=0.1)
       memory = psutil.virtual_memory()
@@ -188,7 +192,7 @@
       if memory.percent > 90:
           return False, "Memory critical"
       return True, "OK"
-
+  ```
 
   사용자 PC 성능에 전적으로 의존하여, 저사양 PC에서는 대규모 테스트 실행이 어려웠습니다.
 
